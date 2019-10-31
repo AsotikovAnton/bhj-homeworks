@@ -7,7 +7,7 @@ for (let i = 0; i < fontSize.length; i++) {
     fontSize[i].addEventListener("click", function() {
         event.preventDefault();
         for (let j = 0; j < fontSize.length; j++) {
-            fontSize[j].classList.remove("size_active");
+            fontSize[j].classList.remove("font-size_active");
 
             if (reader.classList.contains("book_fs-big")) {
                 reader.classList.remove("book_fs-big");
