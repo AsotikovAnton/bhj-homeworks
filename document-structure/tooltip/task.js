@@ -1,15 +1,22 @@
-const links = document.querySelectorAll(".has-tooltip");
+const body = document.body;
 
-for (let i = 0; i < links.length; i++) {
-    let placeLinks = links[i].getBoundingClientRect();
-    let hints = `<div class="tooltip tooltip_active" style="left:${placeLinks.x}px">${links[i].title}</div>`;
-
-    links[i].addEventListener("click", (event) => {
-        event.preventDefault();
-        if(!event.target.nextElementSibling.classList.contains("tooltip_active")) {
-            event.target.insertAdjacentHTML("afterEnd", hints)
-        } else {
-            event.target.nextElementSibling.remove();
+body.addEventListener('click', function(e) {
+    e.preventDefault();
+    let target = e.target;
+    const clientRect = target.getBoundingClientRect();
+    if (target.classList.contains('has-tooltip')) {
+ 		if (target.children.length !== 0 ) {
+ 			deleteElement();
+ 		} else {
+            deleteElement();
+            target.insertAdjacentHTML('beforeend', `<div class="tooltip tooltip_active"
+            style="left: ${clientRect.left + 'px'}; top: ${clientRect.bottom + 'px'}">${target.getAttribute('title')}</div>`)
         }
-    });
+    }
+});
+
+function deleteElement() {
+    if (document.querySelector('.tooltip_active') !== null) {
+        document.querySelector('.tooltip_active').remove();
+    }
 }
