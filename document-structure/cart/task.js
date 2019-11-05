@@ -4,7 +4,7 @@ const cartProducts = document.querySelector(".cart__products");
 
 function addProductInCart(id, item, image) {
     return `<div class="cart__product" data-id="${id}">
-                <img class="cart__product-image" src="${image}">
+                <img class="cart__product-image product__image" src="${image}">
                 <div class="cart__product-count">${item}</div>
             </div>`
 }
